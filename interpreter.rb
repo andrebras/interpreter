@@ -17,8 +17,12 @@ class Nodes
   # The "context" variable is the environment in which the node is evaluated (local
   # variables, current class, etc.).
   def eval(context)
-    # The last value evaluated in a method is the return value.
-    nodes.map { |node| node.eval(context) }.last
+    return_value = nil
+    nodes.each do |node|
+      return_value = node.eval(context)
+    end
+    # The last value evaluated in a method is the return value (or nil if none).
+    return_value || Runtime["nil"]
   end
 end
 
