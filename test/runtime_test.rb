@@ -32,5 +32,9 @@ class RuntimeTest < Test::Unit::TestCase
   
   def test_number_add
     ### Exercise: Compute 1 + 2 using the Runtime API
+    # 1.+(2)
+    one = Runtime["Number"].new_with_value(1)
+    two = Runtime["Number"].new_with_value(2)
+    assert_equal 3, one.call("+", [two]).ruby_value
   end
 end
