@@ -92,14 +92,11 @@ class Lexer < Racc::Parser
       when (text = @ss.scan(/nil/))
          action { [:NIL, text] }
 
-      when (text = @ss.scan(/[A-Z][\w_]*/))
+      when (text = @ss.scan(/[a-z]\w*/))
+         action { [:IDENTIFIER, text] }
+
+      when (text = @ss.scan(/[A-Z]\w*/))
          action { [:CONSTANT, text] }
-
-      when (text = @ss.scan(/[a-z][\w_]*/))
-         action { [:IDENTIFIER, text ]}
-
-      when (text = @ss.scan(/\#.*$/))
-        ;
 
       when (text = @ss.scan(/\|\|/))
          action { [text, text] }
@@ -113,10 +110,10 @@ class Lexer < Racc::Parser
       when (text = @ss.scan(/!=/))
          action { [text, text] }
 
-      when (text = @ss.scan(/>=/))
+      when (text = @ss.scan(/<=/))
          action { [text, text] }
 
-      when (text = @ss.scan(/<=/))
+      when (text = @ss.scan(/>=/))
          action { [text, text] }
 
       when (text = @ss.scan(/./))
