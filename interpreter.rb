@@ -119,5 +119,8 @@ class IfNode
     # Here you have access to:
     #  condition: condition node that will determine if the body should be executed
     #       body: node to be executed if the condition is true
+    if condition.eval(context).ruby_value
+      body.eval(context)
+    end
   end
 end
