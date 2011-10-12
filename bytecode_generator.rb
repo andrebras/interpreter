@@ -52,7 +52,7 @@ class BytecodeGenerator
   end
   
   def get_local(name)
-    
+    emit GET_LOCAL, local_index(name)
   end
   
   def call(receiver, method, arguments)
