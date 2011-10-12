@@ -115,7 +115,7 @@ rule
   | Expression '*' Expression     { result = CallNode.new(val[0], val[1], [val[2]]) }
   | Expression '/' Expression     { result = CallNode.new(val[0], val[1], [val[2]]) }
   # Unary operators
-  | '!' Expression                { result = CallNode.new(nil, val[0], [val[1]]) }
+  | '!' Expression                { result = CallNode.new(val[1], val[0], []) }
   ;
   
   # Assignation to a local variable
