@@ -7,8 +7,8 @@ if $h # -h option
   abort <<USAGE
 Usage:
 
-  ./notruby -c=js file.rb # compile to Javascript
-  ./notruby -c=bc file.rb # compile to Bytecode
+  ./notrubyc -c=js file.rb # compile to Javascript
+  ./notrubyc -c=bc file.rb # compile to Bytecode
 
 USAGE
 end
