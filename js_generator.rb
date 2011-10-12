@@ -15,23 +15,28 @@ class JsGenerator
   end
   
   def compile_all(nodes)
-    
+    nodes.each do |node|
+      node.compile(self)
+      emit ";\n"
+    end
   end
   
   def number_literal(value)
-    
+    emit value
   end
   
   def string_literal(value)
-    
+    emit "\"" + value + "\""
   end
   
   def set_local(name, value)
-    
+    @locals << name unless has_local?(name)
+    emit "#{name} = "
+    value.compile(self)
   end
   
   def get_local(name)
-    
+    emit name
   end
   
   def if(condition, body)
@@ -39,6 +44,7 @@ class JsGenerator
   end
   
   def assemble
-    
+    "var " + @locals.join(", ") + ";\n" +
+    @code.join
   end
 end
